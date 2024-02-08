@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
-from demo.models import Author,Publisher,Book
-from demo.forms import AuthorForm, PublisherForm, BookForm
+
 from demo.forms import GENERIC_CLASSES_AND_FORMS
 
 urlpatterns = [path('', views.index, name='index')]
