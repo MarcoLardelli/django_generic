@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{% endblock %}
+{% block content %}
+
+<table>
+  <tr>
+    <td>
+      <h2>{{ NAME }}</h2>
+    </td>
+  </tr>
+</table>
+
+<hr>
+<div class="col">
+    <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <table class="editform">
+        {{ form.as_table }}
+        </table>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Save"/> <a href="{% url LISTURL %}"> BACK</a>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+   $("#id_date").datepicker({ dateFormat: 'dd.mm.yy' });
+});
+</script>
+{% endblock %}

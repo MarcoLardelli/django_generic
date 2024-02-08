@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{% endblock %}
+{% block content %}
+    <h2></h2>
+    <hr>
+    <div>
+        <form action="" method="post">{% csrf_token %}
+            <p>Are you sure you want to delte "{{ object }}"?</p>
+            <input class="btn btn-danger" type="submit" value="Delete"/>
+            <a href="{% url LISTURL %}"><button type="button" class="btn btn-success">Cancel</button></a>
+        </form>
+    </div>
+{% endblock %}

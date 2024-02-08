@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+    <h2>{{ NAME }}: </h2>
+    <div>
+        {% if CanAdd %}
+        <p>
+            <a href="{% url AddURL %}">[+]</a>
+        </p>
+        {% endif %}
+      <table id="list" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Item</th>
+                {% if ViewURL %}<th>Show</th>{% endif %}
+                {% if CanEdit %}<th>Edit</th>{% endif %}
+                {% if CanDelete %}<th>Delete</th>{% endif %}
+            </tr>
+        </thead>
+            {% for object in object_list %}
+                <tr>
+                  <td>{% if CanEdit %}<a href="{% url UpdateURL object.pk %}">{{ object }}</a>{% else %}{{ object }}{% endif %}
+                  </td>
+                  {% if ViewURL %}<td><a href="{% url ViewURL object.pk %}">view</a></td>{% endif %}
+                  {% if CanEdit %}<td><a href="{% url UpdateURL object.pk %}">edit</a></td>{% endif %}
+                  {% if CanDelete %}<td><a href="{% url DeleteURL object.pk %}">delete</a></td>{% endif %}
+                </tr>
+            {% empty %}
+                <tr>No items yet</tr>
+            {% endfor %}
+
+        </table>
+        {% if CanAdd %}
+        <p>
+            <a href="{% url AddURL %}">[+]</a>
+        </p>
+        {% endif %}
+    </div>
+
+    <script>
+        $(document).ready(function() {
+          $('#list').DataTable({order: [[ 1, "asc" ]] });
+        } );
+    </script>
+{% endblock %}

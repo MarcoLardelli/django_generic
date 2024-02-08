@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{% endblock %}
+{% block content %}
+<table>
+  <tr>
+    <td>
+      <h2>{{ NAME }}</h2>
+    </td>
+  </tr>
+</table>
+
+    <hr>
+    <div class="col">
+       
+        <ul>
+            {% for field in OBJ %}
+                <li><b>{{ field.label }}:</b> {{ field.data }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url LISTURL %}"> BACK</a>
+    </div>
+
+{% endblock %}
